@@ -103,8 +103,8 @@ def generate_blog_post_themes():
         print("Response: ", response.choices[0].message.content)
         # Parse the response content as JSON
         extracted_json = extract_json_content(response.choices[0].message.content)
-        print("Generated themes: ", extract_json_content)
-        return extract_json_content
+        print("Generated themes: ", extracted_json)  # Fix: print extracted_json instead of the function
+        return extracted_json  # Fix: return extracted_json instead of extract_json_content
     except json.JSONDecodeError as e:
         print(f"Error decoding JSON: {e}")
         return []
