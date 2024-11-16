@@ -1,0 +1,1 @@
+I can provide information on how to add data to your chatbot, common use cases, and what Chatbond is. Let me know if you need help with any of these topics.

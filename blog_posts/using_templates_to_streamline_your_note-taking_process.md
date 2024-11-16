@@ -1,0 +1,1 @@
+I'm here to provide assistance and guidance on using templates to streamline your note-taking process. Let me know how I can help you with this topic.

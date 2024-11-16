@@ -1,0 +1,1 @@
+I can guide you on how to enhance your note-taking experience using Chatbond, but unfortunately, I do not have information specifically related to customizing note-taking in Oneboard. If you have any questions about using Chatbond or enhancing your chatbot, feel free to ask!

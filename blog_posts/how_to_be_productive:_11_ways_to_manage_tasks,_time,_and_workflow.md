@@ -1,0 +1,1 @@
+I'm here to assist you with questions related to enhancing your chatbot with Chatbond. If you have any inquiries about adding data to your chatbot, understanding what Chatbond is, or learning about the available plans, feel free to ask!
