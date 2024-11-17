@@ -1,0 +1,3 @@
+selenium
+newspaper3k
+bs4
