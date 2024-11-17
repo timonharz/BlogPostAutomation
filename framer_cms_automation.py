@@ -129,6 +129,8 @@ def extract_json_content(text):
     except json.JSONDecodeError as e:
         print(f"Error decoding JSON: {e}")
         return None
+    
+
 
 if __name__ == "__main__":
     while True:
@@ -147,7 +149,7 @@ if __name__ == "__main__":
             generate_blog_posts(themes)
             
             # Add a delay before starting the next cycle
-            print("Completed cycle. Waiting 5 minutes before starting next cycle...")
+            print("Completed cycle. Waiting 1 minutes before starting next cycle...")
             time.sleep(60)
             
         except Exception as e:
