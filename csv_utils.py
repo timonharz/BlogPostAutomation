@@ -63,4 +63,4 @@ def split_csv(input_file_url, max_file_size_mb, output_dir='data/splitted'):
     
     
 if __name__ == '__main__':
-    split_csv('data/lds/blog_posts.csv',  1)
+    split_csv('data/lds/blog_posts.csv',  4)

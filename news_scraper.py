@@ -28,13 +28,15 @@ from bs4 import BeautifulSoup
 import newspaper
 from newspaper import Article
 import json
-import datetime as dt
+from datetime import datetime
 from nytimes_scraper.nyt_api import NytApi
+from nytimes_scraper import run_scraper, scrape_month
 from nytimes_scraper.articles import fetch_articles_by_month, articles_to_df
 from nytimes_scraper.comments import fetch_comments, fetch_comments_by_article, comments_to_df
 
 
 nytimes_api_key = 'a6AeM0I4pk9Xv4LG86sGYgJ2DkKGr3Lx'
+nytimes_api = NytApi(nytimes_api_key)
 
 def fetch_and_decode_latest_news():
     # Fetches the latest news from newsdata.io
@@ -99,7 +101,9 @@ def fetch_and_decode_latest_news():
 def fetch_news_from_nytimes():
     articles = []
     
-    nytimes_paper = newspaper.build('https://nytimes.com', language='en')
+    article_df, comment_df = scrape_month(nytimes_api_key, date=datetime.now())
+    
+    print("Article df: ", article_df)
 
     return nytimes_paper.articles
 
