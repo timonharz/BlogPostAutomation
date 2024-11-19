@@ -5,6 +5,7 @@ import csv
 from g4f.client import Client
 from together import Together
 import time
+from cover_image_fetcher import get_first_pixabay_result
 
 client = Together(api_key="8a4175271079b2200c7dbdfdc833799e12d2022581fbe546f93d5976c4ca650e")
 gpt4free_client = Client()
@@ -64,16 +65,17 @@ def generate_blog_posts(topics):
     
     csv_header = ["title", "author", "cover_description", "content", "cover_image_url", "page_description"]
     blog_data = []
+    output_filename = "data/blog_posts.csv"
+
     
     for topic in topics:
         title = topic
         author = "Timon Harz"
-        output_filename = "data/blog_posts.csv"
-
         
         try:
             content = generate_blog_post_content(topic)
-            cover_image_url = generate_blog_post_image(topic)
+            cover_image_url = get_first_pixabay_result(topic)
+            print("Cover image url: ", cover_image_url)
             page_description = generate_page_description(topic)
             
             with open(output_filename, 'a', newline='') as file:
@@ -108,6 +110,19 @@ def generate_blog_post_themes():
     except json.JSONDecodeError as e:
         print(f"Error decoding JSON: {e}")
         return []
+
+def get_search_query(theme):
+    response = client.chat.completions.create(
+        model="meta-llama/Llama-Vision-Free",
+        messages=[
+            {"role": "system", "content": "You are a Google search expert. Given a specific theme, return only the optimized Google search query without any additional text or explanation."},
+            {"role": "user", "content": f"Theme: {theme}. Generate an optimized Google search query based on this theme, returning only the query without any additional text."}
+        ]
+    )
+    print("Response: ", response.choices[0].message.content)
+        
+    return response.choices[0].message.content
+
 
 def extract_json_content(text):
     try:
@@ -150,7 +165,7 @@ if __name__ == "__main__":
             
             # Add a delay before starting the next cycle
             print("Completed cycle. Waiting 1 minutes before starting next cycle...")
-            time.sleep(60)
+            time.sleep(5)
             
         except Exception as e:
             print(f"An error occurred in the main loop: {e}")
