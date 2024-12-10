@@ -2,7 +2,7 @@ import csv
 import pandas as pd
 import os
 
-def split_csv(input_file_url, max_file_size_mb, output_dir='data/splitted_22nov'):
+def split_csv(input_file_url, max_file_size_mb, output_dir='data/splitted_24nov'):
     # Ensure the output directory exists
     os.makedirs(output_dir, exist_ok=True)
     
@@ -63,4 +63,4 @@ def split_csv(input_file_url, max_file_size_mb, output_dir='data/splitted_22nov'
     
     
 if __name__ == '__main__':
-    split_csv('data/blog_posts_22nov.csv',  4)
+    split_csv('data/blog_posts_24nov.csv',  4)
